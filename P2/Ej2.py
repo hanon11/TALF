@@ -20,7 +20,7 @@ for element in lista_lower:
     if not contains:
         final.append(element)
 converted_to_set = set(final)
-print(converted_to_set)
+print('Palabras del quijote: ' + str(converted_to_set))
 transitions = {  # if any transition has the letter h, i, g or  o, I stay in the current state
     'q0': {'a': 'A', 'l': 'L', 'd': 'D', 'h': 'q0', 'i': 'q0', 'g': 'q0', 'o': 'q0'},
     'A': {'a': 'AA', 'l': 'AL', 'd': 'AD', 'h': 'A', 'i': 'A', 'g': 'A', 'o': 'A'},
@@ -29,10 +29,41 @@ transitions = {  # if any transition has the letter h, i, g or  o, I stay in the
     'AA': {'a': 'DEAD', 'l': 'AAL', 'd': 'AAD', 'h': 'AA', 'i': 'AA', 'g': 'AA', 'o': 'AA'},
     'AD': {'a': 'AAD', 'l': 'ADL', 'd': 'DEAD', 'h': 'AD', 'i': 'AD', 'g': 'AD', 'o': 'AD'},
     'AL': {'a': 'AAL', 'l': 'DEAD', 'd': 'ADL', 'h': 'AL', 'i': 'AL', 'g': 'AL', 'o': 'AL'},
+    'DL': {'a': 'ADL', 'l': 'DEAD', 'd': 'DEAD', 'h': 'DL', 'i': 'DL', 'g': 'DL', 'o': 'DL'},
     'AAD': {'a': 'DEAD', 'l': 'AADL', 'd': 'DEAD', 'h': 'AAD', 'i': 'AAD', 'g': 'AAD', 'o': 'AAD'},
+    'ADL': {'a': 'AADL', 'l': 'DEAD', 'd': 'DEAD', 'h': 'ADL', 'i': 'ADL', 'g': 'ADL', 'o': 'ADL'},
     'AAL': {'a': 'DEAD', 'l': 'DEAD', 'd': 'AADL', 'h': 'AAL', 'i': 'AAL', 'g': 'AAL', 'o': 'AAL'},
     'AADL': {'a': 'DEAD', 'l': 'DEAD', 'd': 'DEAD', 'h': 'AADL', 'i': 'AADL', 'g': 'AADL', 'o': 'AADL'},
     'DEAD': {'a': 'DEAD', 'l': 'DEAD', 'd': 'DEAD', 'h': 'DEAD', 'i': 'DEAD', 'g': 'DEAD', 'o': 'DEAD'}
 }
 
+
+accepted = []
+for word in converted_to_set:
+    actual_state = 'q0'
+    for char in word:
+        actual_state = transitions[actual_state][char]
+    if actual_state != 'DEAD':
+        accepted.append(word)
+print('Palabras aceptadas: ' + str(accepted))
+
+prueba = ['HALA', 'HALO', 'HADA', 'LIADA', 'GALGO', 'LADO', 'HALAGO', 'HALLA', 'DADO', 'ALADA', 'HALAGA', 'LOLA']
+lista_lower = []
+for element in prueba:
+    lista_lower.append(element.lower())
+accepted = []
+not_accepted = []
+for word in lista_lower:
+    actual_state = 'q0'
+    for char in word:
+        actual_state = transitions[actual_state][char]
+    if actual_state != 'DEAD':
+        accepted.append(word)
+    else:
+        not_accepted.append(word)
+
+
+print('\n*****EJEMPLO DEL CAMPUS*****')
+print('Palabras aceptadas: ' + str(accepted))
+print('Palabras NO aceptadas: ' + str(not_accepted))
 quijote.close()
