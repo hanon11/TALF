@@ -1,0 +1,23 @@
+A metallurgical company needs your help! There has been an incident and the database files have been mixed up.
+They need the steel's sheet ASAP! And they know you have the necessary capacities for it!
+
+The company has given you a comma separated values file with all the data mixed in it, they say the data they need have the following structure:
+Element1,Element2,Tolerance
+An explanation of every field is detailed next:
+1.    Element 1: is a real number in the range between 0 and 2 both included.
+2.    Element 2: is a real number in the range between -1 and 2, both included.
+3.    Tolerance: is an integer number between 1 and 4.
+The company needs you to perform the following task:
+•    Task 1: Design a Regular Expression (as defined in theory lectures) to check the entries of their databases, in order to discover the right ones. Define the alphabet of the language represented by the RE.
+•    Task 2: Convert the obtained RE to an ℇ-NFA following the Thompson construction method.
+•    Task 3: Get the minimum DFA equivalent to the designed ℇ-NFA
+Also the company has detected that some steels that include number 25 in their decimal numbers can cause some danger so they need to identify these entries.
+•    Task 4: Design a minimum DFA that accepts database entries, correct or not, where the decimal part of the element 1 has the number 25 in it.
+•    Task 5: Combine de DFAs designed in tasks 3 and 4 with the product automaton method to find a DFA that accepts only correct entries in which the element1 has number 25 in its decimals.
+•    Task 6: Implement in your favorite language the obtained DFA using the table method. The program must read a file with the database and print the correct entries where the element1 has the number 25 in its decimal part.
+
+Submit a zip file named with your initials, including:
+- Report showing all steps followed, from the design of the initial RE, the ℇ-NFA and its minimum DFA, the DFA designed in Task 4, the product DFA and the result of minimizing it. There are alternative ways to solve the problem, but it must be done following the tasks specified.
+- The report must include details of intermediate steps of the different algorithms you need to apply, for instance: renaming of states, the different transition tables generated, the minimization table, the closure of the states, ...
+- Include the source code of your program.
+- Add a file with a representative set of input test cases (for both accepted and rejected strings).
