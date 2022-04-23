@@ -4,7 +4,7 @@ class CalcLexer(Lexer):
     # Set of token names. This is always required 
     tokens = { NUMBER, PLUS, TIMES, MINUS, DIV, ASSIGN, ID, LPAREN,RPAREN }
     #literals = {'+', '*', '-'}
-    ignore = ' \t'
+    ignore = ' \t;'
     PLUS   = r'\+' 
     TIMES  = r'\*'
     MINUS  = r'\-' 
@@ -47,42 +47,58 @@ class CalcParser(Parser):
     @_('E')
     def assign(self,p):
         return p.E
-    
-    @_('NUMBER')
-    def E(self, p):
-        return p.NUMBER
-    
-    @_('ID')
-    def E(self, p):
-        return self.vars[p.ID]
-    
-    @_('E')
-    def E1(self,p):
+
+    @_('ID ASSIGN E')
+    def E(self,p):
+        self.vars[p.ID] = p.E
         return p.E
 
-    @_('E DIV E1')
+    @_('E PLUS suma')
     def E(self, p):
-        return p.E / p.E1
-    
-    @_('E TIMES E1')
-    def E(self, p):
-        return p.E * p.E1
+        return p.E + p.suma
 
-    @_('E PLUS E1')
+    @_('E MINUS suma')
     def E(self, p):
-        return p.E + p.E1
+        return p.E - p.suma
 
-    @_('E MINUS E1')
+    @_('suma')
     def E(self, p):
-        return p.E - p.E1
-   
-    @_('LPAREN E RPAREN')
-    def E(self, p):
-        return p.E
+        return p.suma
 
-    @_('MINUS E')
-    def E(self, p):
+    @_('suma TIMES fact')
+    def suma(self, p):
+        return p.suma * p.fact
+
+    @_('suma DIV fact')
+    def suma(self, p):
+        return p.suma / p.fact
+
+    @_('fact')
+    def suma(self, p):
+        return p.fact
+
+    @_('MINUS LPAREN E RPAREN')
+    def fact(self,p):
         return -p.E
+
+    @_('LPAREN E RPAREN')
+    def fact(self, p):
+        return p.E
+
+    @_('NUMBER')
+    def fact(self, p):
+        return p.NUMBER
+
+    @_('MINUS NUMBER')
+    def fact(self, p):
+        return -p.NUMBER
+
+    @_('ID')
+    def fact(self, p):
+        return self.vars[p.ID]
+
+
+    
     
 lexer = CalcLexer() 
 parser = CalcParser()
