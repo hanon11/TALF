@@ -1,0 +1,15 @@
+/* hola adios  */
+int main()
+{
+    int i = 0;
+    float x = 0.3;
+    char a = 'a';
+    for(int j = 0; j < 10; j++)
+    {};
+    
+    if(i < j)
+        printf("hola");
+    else printf("adios");
+    return 0;
+};
+
