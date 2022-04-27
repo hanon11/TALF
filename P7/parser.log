@@ -1,0 +1,230 @@
+Grammar:
+
+Rule 0     S' -> S
+Rule 1     S -> BEGIN INST END
+Rule 2     INST -> empty
+Rule 3     INST -> INST RIGHT NUMBER
+Rule 4     INST -> INST LEFT NUMBER
+Rule 5     INST -> INST BACK NUMBER
+Rule 6     INST -> INST FORWARD NUMBER
+Rule 7     INST -> INST REPEAT NUMBER LCORCH INST RCORCH
+Rule 8     empty -> <empty>
+
+Terminals, with rules where they appear:
+
+BACK                 : 5
+BEGIN                : 1
+END                  : 1
+FORWARD              : 6
+LCORCH               : 7
+LEFT                 : 4
+NUMBER               : 3 4 5 6 7
+RCORCH               : 7
+REPEAT               : 7
+RIGHT                : 3
+error                : 
+
+Nonterminals, with rules where they appear:
+
+INST                 : 1 3 4 5 6 7 7
+S                    : 0
+empty                : 2
+
+
+state 0
+
+    (0) S' -> . S
+    (1) S -> . BEGIN INST END
+    BEGIN           shift and go to state 2
+
+    S                              shift and go to state 1
+
+state 1
+
+    (0) S' -> S .
+
+
+state 2
+
+    (1) S -> BEGIN . INST END
+    (2) INST -> . empty
+    (3) INST -> . INST RIGHT NUMBER
+    (4) INST -> . INST LEFT NUMBER
+    (5) INST -> . INST BACK NUMBER
+    (6) INST -> . INST FORWARD NUMBER
+    (7) INST -> . INST REPEAT NUMBER LCORCH INST RCORCH
+    (8) empty -> .
+    END             reduce using rule 8 (empty -> .)
+    RIGHT           reduce using rule 8 (empty -> .)
+    LEFT            reduce using rule 8 (empty -> .)
+    BACK            reduce using rule 8 (empty -> .)
+    FORWARD         reduce using rule 8 (empty -> .)
+    REPEAT          reduce using rule 8 (empty -> .)
+
+    INST                           shift and go to state 3
+    empty                          shift and go to state 4
+
+state 3
+
+    (1) S -> BEGIN INST . END
+    (3) INST -> INST . RIGHT NUMBER
+    (4) INST -> INST . LEFT NUMBER
+    (5) INST -> INST . BACK NUMBER
+    (6) INST -> INST . FORWARD NUMBER
+    (7) INST -> INST . REPEAT NUMBER LCORCH INST RCORCH
+    END             shift and go to state 5
+    RIGHT           shift and go to state 6
+    LEFT            shift and go to state 7
+    BACK            shift and go to state 8
+    FORWARD         shift and go to state 9
+    REPEAT          shift and go to state 10
+
+
+state 4
+
+    (2) INST -> empty .
+    END             reduce using rule 2 (INST -> empty .)
+    RIGHT           reduce using rule 2 (INST -> empty .)
+    LEFT            reduce using rule 2 (INST -> empty .)
+    BACK            reduce using rule 2 (INST -> empty .)
+    FORWARD         reduce using rule 2 (INST -> empty .)
+    REPEAT          reduce using rule 2 (INST -> empty .)
+    RCORCH          reduce using rule 2 (INST -> empty .)
+
+
+state 5
+
+    (1) S -> BEGIN INST END .
+    $end            reduce using rule 1 (S -> BEGIN INST END .)
+
+
+state 6
+
+    (3) INST -> INST RIGHT . NUMBER
+    NUMBER          shift and go to state 11
+
+
+state 7
+
+    (4) INST -> INST LEFT . NUMBER
+    NUMBER          shift and go to state 12
+
+
+state 8
+
+    (5) INST -> INST BACK . NUMBER
+    NUMBER          shift and go to state 13
+
+
+state 9
+
+    (6) INST -> INST FORWARD . NUMBER
+    NUMBER          shift and go to state 14
+
+
+state 10
+
+    (7) INST -> INST REPEAT . NUMBER LCORCH INST RCORCH
+    NUMBER          shift and go to state 15
+
+
+state 11
+
+    (3) INST -> INST RIGHT NUMBER .
+    END             reduce using rule 3 (INST -> INST RIGHT NUMBER .)
+    RIGHT           reduce using rule 3 (INST -> INST RIGHT NUMBER .)
+    LEFT            reduce using rule 3 (INST -> INST RIGHT NUMBER .)
+    BACK            reduce using rule 3 (INST -> INST RIGHT NUMBER .)
+    FORWARD         reduce using rule 3 (INST -> INST RIGHT NUMBER .)
+    REPEAT          reduce using rule 3 (INST -> INST RIGHT NUMBER .)
+    RCORCH          reduce using rule 3 (INST -> INST RIGHT NUMBER .)
+
+
+state 12
+
+    (4) INST -> INST LEFT NUMBER .
+    END             reduce using rule 4 (INST -> INST LEFT NUMBER .)
+    RIGHT           reduce using rule 4 (INST -> INST LEFT NUMBER .)
+    LEFT            reduce using rule 4 (INST -> INST LEFT NUMBER .)
+    BACK            reduce using rule 4 (INST -> INST LEFT NUMBER .)
+    FORWARD         reduce using rule 4 (INST -> INST LEFT NUMBER .)
+    REPEAT          reduce using rule 4 (INST -> INST LEFT NUMBER .)
+    RCORCH          reduce using rule 4 (INST -> INST LEFT NUMBER .)
+
+
+state 13
+
+    (5) INST -> INST BACK NUMBER .
+    END             reduce using rule 5 (INST -> INST BACK NUMBER .)
+    RIGHT           reduce using rule 5 (INST -> INST BACK NUMBER .)
+    LEFT            reduce using rule 5 (INST -> INST BACK NUMBER .)
+    BACK            reduce using rule 5 (INST -> INST BACK NUMBER .)
+    FORWARD         reduce using rule 5 (INST -> INST BACK NUMBER .)
+    REPEAT          reduce using rule 5 (INST -> INST BACK NUMBER .)
+    RCORCH          reduce using rule 5 (INST -> INST BACK NUMBER .)
+
+
+state 14
+
+    (6) INST -> INST FORWARD NUMBER .
+    END             reduce using rule 6 (INST -> INST FORWARD NUMBER .)
+    RIGHT           reduce using rule 6 (INST -> INST FORWARD NUMBER .)
+    LEFT            reduce using rule 6 (INST -> INST FORWARD NUMBER .)
+    BACK            reduce using rule 6 (INST -> INST FORWARD NUMBER .)
+    FORWARD         reduce using rule 6 (INST -> INST FORWARD NUMBER .)
+    REPEAT          reduce using rule 6 (INST -> INST FORWARD NUMBER .)
+    RCORCH          reduce using rule 6 (INST -> INST FORWARD NUMBER .)
+
+
+state 15
+
+    (7) INST -> INST REPEAT NUMBER . LCORCH INST RCORCH
+    LCORCH          shift and go to state 16
+
+
+state 16
+
+    (7) INST -> INST REPEAT NUMBER LCORCH . INST RCORCH
+    (2) INST -> . empty
+    (3) INST -> . INST RIGHT NUMBER
+    (4) INST -> . INST LEFT NUMBER
+    (5) INST -> . INST BACK NUMBER
+    (6) INST -> . INST FORWARD NUMBER
+    (7) INST -> . INST REPEAT NUMBER LCORCH INST RCORCH
+    (8) empty -> .
+    RCORCH          reduce using rule 8 (empty -> .)
+    RIGHT           reduce using rule 8 (empty -> .)
+    LEFT            reduce using rule 8 (empty -> .)
+    BACK            reduce using rule 8 (empty -> .)
+    FORWARD         reduce using rule 8 (empty -> .)
+    REPEAT          reduce using rule 8 (empty -> .)
+
+    INST                           shift and go to state 17
+    empty                          shift and go to state 4
+
+state 17
+
+    (7) INST -> INST REPEAT NUMBER LCORCH INST . RCORCH
+    (3) INST -> INST . RIGHT NUMBER
+    (4) INST -> INST . LEFT NUMBER
+    (5) INST -> INST . BACK NUMBER
+    (6) INST -> INST . FORWARD NUMBER
+    (7) INST -> INST . REPEAT NUMBER LCORCH INST RCORCH
+    RCORCH          shift and go to state 18
+    RIGHT           shift and go to state 6
+    LEFT            shift and go to state 7
+    BACK            shift and go to state 8
+    FORWARD         shift and go to state 9
+    REPEAT          shift and go to state 10
+
+
+state 18
+
+    (7) INST -> INST REPEAT NUMBER LCORCH INST RCORCH .
+    END             reduce using rule 7 (INST -> INST REPEAT NUMBER LCORCH INST RCORCH .)
+    RIGHT           reduce using rule 7 (INST -> INST REPEAT NUMBER LCORCH INST RCORCH .)
+    LEFT            reduce using rule 7 (INST -> INST REPEAT NUMBER LCORCH INST RCORCH .)
+    BACK            reduce using rule 7 (INST -> INST REPEAT NUMBER LCORCH INST RCORCH .)
+    FORWARD         reduce using rule 7 (INST -> INST REPEAT NUMBER LCORCH INST RCORCH .)
+    REPEAT          reduce using rule 7 (INST -> INST REPEAT NUMBER LCORCH INST RCORCH .)
+    RCORCH          reduce using rule 7 (INST -> INST REPEAT NUMBER LCORCH INST RCORCH .)
