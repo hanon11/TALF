@@ -1,0 +1,19 @@
+Dada la gramática G:
+S -> S+a | a*B | a
+A -> Ab | cd
+B -> Ac | Cde
+C -> Sd | ε
+
+Se pide:
+
+	-Hacer las modificaciones necesarias sobre la gramática para tratar de convertirla en una gramática LL(1) mínima:
+	-Eliminar recursividades por la izquierda y aplicar factorizaciones y reemplazos, cuando sea posible.
+	-Eliminar símbolos inútiles
+	-Eliminar símbolos inalcanzables
+	-Generar la tabla LL(1) y decir si la gramática generada es LL(1) o no.
+	-Generar la tabla SLR(1) para G y comprobar si es SLR(1) o no.
+	-Se recomienda implementar la gramática en SLY y comprobar el resultado con el fichero 'debugfile' que genera, para aprender a interpretarlo (esto no hay que entregarlo).
+
+Entregar un informe en el que se muestren todos los pasos intermedios que se vayan generando para realizar los trabajos solicitados.
+
+Entrega: subir el informe antes del 29 de mayo a las 23:59.
