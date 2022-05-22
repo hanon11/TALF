@@ -1,0 +1,7 @@
+S->aX
+X->*BY|Y
+Y->+aY|^
+A->cdD
+D->bD|^
+B->Ac|Cde
+C->Sd|^
