@@ -2,9 +2,7 @@ from sly import Lexer
 from sly import Parser
 import turtle
 class CalcLexer(Lexer):
-    # Set of token names. This is always required 
     tokens = { NUMBER, BEGIN, FORWARD, RIGHT, LEFT, BACK, END, REPEAT, LCORCH, RCORCH }
-    #literals = {'+', '*', '-'}
     ignore = ' \t;'
     BEGIN = r'BEGIN'
     FORWARD = r'FORWARD'
@@ -34,10 +32,9 @@ class CalcParser(Parser):
     def __init__(self):
         self.lista = []
         self.t = turtle.Turtle()
-    # Get the token list from the lexer (required)
     tokens = CalcLexer.tokens
     debugfile = 'parser.log' 
-    # Grammar rules and actions   
+    
     @_('BEGIN INST END')
     def S(self,p):
         self.lista = []
