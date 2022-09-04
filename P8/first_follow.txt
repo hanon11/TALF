@@ -1,0 +1,12 @@
+first(S) = {a} U first(S) = {a}
+first(A) = {c} U first(A) = {c}
+first(B) = first(C) U first(A) = {c, a, epsilon}
+first(C) = first(S) U {epsilon} = {a, epsilon}
+
+
+-----------------------
+
+follow(S) = {$, +, d}
+follow(A) = {b, c}
+follow(B) = follow S = {$, +, d}
+follow(C) = {d}
