@@ -1,7 +1,5 @@
-S->aX
-X->*BY|Y
-Y->+aY|^
-A->cdD
-D->bD|^
+S'->S
+S->S+a|a*B|a
+A->Ab|cd
 B->Ac|Cde
 C->Sd|^
