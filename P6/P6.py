@@ -2,7 +2,7 @@ from sly import Lexer
 from sly import Parser
 class CalcLexer(Lexer):
     # Set of token names. This is always required 
-    tokens = { NUMBER, PLUS, TIMES, MINUS, DIV, ASSIGN, ID, LPAREN,RPAREN }
+    tokens = { NUMBER, PLUS, TIMES, MINUS, DIV, ASSIGN, ID, LPAREN, RPAREN }
     #literals = {'+', '*', '-'}
     ignore = ' \t;'
     PLUS   = r'\+' 
